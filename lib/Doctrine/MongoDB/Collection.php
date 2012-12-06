@@ -551,7 +551,7 @@ class Collection
     {
         $collection = $this;
         $result = $this->retry(function() use ($collection, $keys, $initial, $reduce, $options) {
-            return $collection->getMongoCollection()->group($keys, $initial, $reduce, $options);
+            return @$collection->getMongoCollection()->group($keys, $initial, $reduce, $options);
         });
         return new ArrayIterator($result);
     }
